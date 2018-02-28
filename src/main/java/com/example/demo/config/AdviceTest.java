@@ -29,6 +29,6 @@ public class AdviceTest {
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder){
-        //webDataBinder.setDisallowedFields("id");
+        webDataBinder.setDisallowedFields("id");
     }
 }

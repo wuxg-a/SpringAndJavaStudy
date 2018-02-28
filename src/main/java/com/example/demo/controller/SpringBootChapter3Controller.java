@@ -53,6 +53,7 @@ public class SpringBootChapter3Controller {
     //http://localhost:9090/advice?id=1&name=wxg
     @RequestMapping(value = "advice", method = RequestMethod.GET)
     public void adviceTest(@ModelAttribute("msg")String msg,  DemoObj obj) throws InterruptedException, IOException {
+
         System.out.println();
     }
 }
