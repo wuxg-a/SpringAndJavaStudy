@@ -5,10 +5,7 @@ import com.example.demo.service.AwareService;
 import com.example.demo.service.ProfileService;
 import com.example.demo.service.impl.AsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -50,10 +47,20 @@ public class SpringBootChapter3Controller {
        profileService.print();
     }
 
-    //http://localhost:9090/advice?id=1&name=wxg
+
     @RequestMapping(value = "advice", method = RequestMethod.GET)
     public void adviceTest(@ModelAttribute("msg")String msg,  DemoObj obj) throws InterruptedException, IOException {
-
+        //http://localhost:9090/advice?id=1&name=wxg
+        //由于配置了webDataBinder 所以值id为null (看AdviceTest中的配置)
         System.out.println();
+    }
+
+    @RequestMapping(value = "convert", method = RequestMethod.POST)
+    @ResponseBody
+    public DemoObj messageConverterTest(@ModelAttribute("msg")String msg,  @RequestBody DemoObj obj) throws InterruptedException, IOException {
+        //使用postman测试：
+        // header : Content-Type  application/x-wisely
+        //body： raw txt 1-wuxg
+        return obj;
     }
 }
