@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.bean.DemoObj;
 import com.example.demo.service.AwareService;
 import com.example.demo.service.ProfileService;
 import com.example.demo.service.impl.AsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,5 +48,11 @@ public class SpringBootChapter3Controller {
     @RequestMapping(value = "profile", method = RequestMethod.GET)
     public void profileService() throws InterruptedException, IOException {
        profileService.print();
+    }
+
+    //http://localhost:9090/advice?id=1&name=wxg
+    @RequestMapping(value = "advice", method = RequestMethod.GET)
+    public void adviceTest(@ModelAttribute("msg")String msg,  DemoObj obj) throws InterruptedException, IOException {
+        System.out.println();
     }
 }
